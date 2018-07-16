@@ -10,6 +10,7 @@
 #include "primitives/block.h"
 #include "uint256.h"
 #include "util.h"
+#include "main.h"
 
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params)
 {
@@ -18,9 +19,12 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     // Genesis block
     if (pindexLast == NULL)
         return nProofOfWorkLimit;
-
+    int64_t DifficultyAdjustmentInterval;
+    if ((chainActive.Height())  >= params.nPowRetargetBlockStart) DifficultyAdjustmentInterval = params.DifficultyAdjustmentInterval2(); else DifficultyAdjustmentInterval = params.DifficultyAdjustmentInterval1(); 
+// Debug log:
+    LogPrintf("GetNextWorkRequired RETARGET\n");
     // Only change once per difficulty adjustment interval
-    if ((pindexLast->nHeight+1) % params.DifficultyAdjustmentInterval() != 0)
+    if ((pindexLast->nHeight+1) % DifficultyAdjustmentInterval != 0)
     {
         if (params.fPowAllowMinDifficultyBlocks)
         {
@@ -33,7 +37,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
             {
                 // Return the last non-special-min-difficulty-rules-block
                 const CBlockIndex* pindex = pindexLast;
-                while (pindex->pprev && pindex->nHeight % params.DifficultyAdjustmentInterval() != 0 && pindex->nBits == nProofOfWorkLimit)
+                while (pindex->pprev && pindex->nHeight % DifficultyAdjustmentInterval != 0 && pindex->nBits == nProofOfWorkLimit)
                     pindex = pindex->pprev;
                 return pindex->nBits;
             }
@@ -42,7 +46,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     }
 
     // Go back by what we want to be 14 days worth of blocks
-    int nHeightFirst = pindexLast->nHeight - (params.DifficultyAdjustmentInterval()-1);
+    int nHeightFirst = pindexLast->nHeight - (DifficultyAdjustmentInterval-1);
     assert(nHeightFirst >= 0);
     const CBlockIndex* pindexFirst = pindexLast->GetAncestor(nHeightFirst);
     assert(pindexFirst);
@@ -57,11 +61,13 @@ unsigned int CalculateNextWorkRequired(const CBlockIndex* pindexLast, int64_t nF
 
     // Limit adjustment step
     int64_t nActualTimespan = pindexLast->GetBlockTime() - nFirstBlockTime;
+    int64_t nPowTargetTemp;
+    if ((chainActive.Height()) > params.nPowRetargetBlockStart) nPowTargetTemp = params.nPowTargetTimespan2; else nPowTargetTemp = params.nPowTargetTimespan1;
     LogPrintf("  nActualTimespan = %d  before bounds\n", nActualTimespan);
-    if (nActualTimespan < params.nPowTargetTimespan/4)
-        nActualTimespan = params.nPowTargetTimespan/4;
-    if (nActualTimespan > params.nPowTargetTimespan*4)
-        nActualTimespan = params.nPowTargetTimespan*4;
+    if (nActualTimespan < nPowTargetTemp/4)
+        nActualTimespan = nPowTargetTemp/4;
+    if (nActualTimespan > nPowTargetTemp*4)
+        nActualTimespan = nPowTargetTemp*4;
 
     // Retarget
     const arith_uint256 bnPowLimit = UintToArith256(params.powLimit);
@@ -70,14 +76,14 @@ unsigned int CalculateNextWorkRequired(const CBlockIndex* pindexLast, int64_t nF
     bnNew.SetCompact(pindexLast->nBits);
     bnOld = bnNew;
     bnNew *= nActualTimespan;
-    bnNew /= params.nPowTargetTimespan;
+    bnNew /= nPowTargetTemp;
 
     if (bnNew > bnPowLimit)
         bnNew = bnPowLimit;
 
     /// debug print
-    LogPrintf("GetNextWorkRequired RETARGET\n");
-    LogPrintf("params.nPowTargetTimespan = %d    nActualTimespan = %d\n", params.nPowTargetTimespan, nActualTimespan);
+    LogPrintf("GetNextWorkRequired RETARGET\n pindexLast is %d\n", pindexLast->nHeight);
+    LogPrintf("params.nPowTargetTimespan = %d    nActualTimespan = %d\n", nPowTargetTemp, nActualTimespan);
     LogPrintf("Before: %08x  %s\n", pindexLast->nBits, bnOld.ToString());
     LogPrintf("After:  %08x  %s\n", bnNew.GetCompact(), bnNew.ToString());
 

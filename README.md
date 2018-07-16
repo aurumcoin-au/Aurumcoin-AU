@@ -1,4 +1,4 @@
-﻿# Aurumcoin-AU-0.12.2.0-beta
+﻿# Aurumcoin-AU-0.12.3.0-beta
 
 What is AURUM
 AURUM coin is an experimental new digital currency that enables instant payments to anyone, anywhere in the world. Aurum uses peer-to-peer 
