@@ -7,10 +7,10 @@
 # Test -alertnotify 
 #
 
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import AurumcoinTestFramework
 from test_framework.util import *
 
-class ForkNotifyTest(BitcoinTestFramework):
+class ForkNotifyTest(AurumcoinTestFramework):
 
     alert_filename = None  # Set by setup_network
 

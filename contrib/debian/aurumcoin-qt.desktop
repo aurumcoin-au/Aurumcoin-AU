@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Aurumcoin
+Comment=Aurumcoin P2P Cryptocurrency
+Comment[fr]=Aurumcoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Aurumcoin, eşten eşe kriptografik sanal para birimi
+Exec=aurumcoin-qt %u
+Terminal=false
+Type=Application
+Icon=aurumcoin128
+MimeType=x-scheme-handler/aurumcoin;
+Categories=Office;Finance;

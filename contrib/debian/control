@@ -1,4 +1,4 @@
-Source: bitcoin
+Source: aurumcoin
 Section: utils
 Priority: optional
 Maintainer: Jonas Smedegaard <dr@jones.dk>
@@ -23,45 +23,45 @@ Build-Depends: debhelper,
  libprotobuf-dev, protobuf-compiler,
  python
 Standards-Version: 3.9.2
-Homepage: https://bitcoincore.org/
-Vcs-Git: git://github.com/bitcoin/bitcoin.git
-Vcs-Browser: https://github.com/bitcoin/bitcoin
+Homepage: https://aurumcoincore.org/
+Vcs-Git: git://github.com/aurumcoin/aurumcoin.git
+Vcs-Browser: https://github.com/aurumcoin/aurumcoin
 
-Package: bitcoind
+Package: aurumcoind
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- Bitcoin is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. Bitcoin uses peer-to-peer
+ Aurumcoin is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. Aurumcoin uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Bitcoin Core
+ and issuing money are carried out collectively by the network. Aurumcoin Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides the daemon, bitcoind, and the CLI tool
- bitcoin-cli to interact with the daemon.
+ This package provides the daemon, aurumcoind, and the CLI tool
+ aurumcoin-cli to interact with the daemon.
 
-Package: bitcoin-qt
+Package: aurumcoin-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- Bitcoin is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. Bitcoin uses peer-to-peer
+ Aurumcoin is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. Aurumcoin uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Bitcoin Core
+ and issuing money are carried out collectively by the network. Aurumcoin Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides Bitcoin-Qt, a GUI for Bitcoin based on Qt.
+ This package provides Aurumcoin-Qt, a GUI for Aurumcoin based on Qt.
 
-Package: bitcoin-tx
+Package: aurumcoin-tx
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer digital currency - standalone transaction tool
- Bitcoin is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. Bitcoin uses peer-to-peer
+ Aurumcoin is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. Aurumcoin uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Bitcoin Core
+ and issuing money are carried out collectively by the network. Aurumcoin Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides bitcoin-tx, a command-line transaction creation
- tool which can be used without a bitcoin daemon.  Some means of
+ This package provides aurumcoin-tx, a command-line transaction creation
+ tool which can be used without a aurumcoin daemon.  Some means of
  exchanging minimal transaction data with peers is still required.

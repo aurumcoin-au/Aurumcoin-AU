@@ -1,4 +1,4 @@
-﻿# Aurumcoin-AU-0.12.3.0-beta
+﻿# Aurumcoin-AU-0.12.4.0-beta
 
 What is AURUM
 AURUM coin is an experimental new digital currency that enables instant payments to anyone, anywhere in the world. Aurum uses peer-to-peer 
@@ -9,7 +9,7 @@ AURUMCOIN is also the name of the open source software which enables the use of 
 
 Coin properties
 
-Coin type Bitcoin (SHA256)
+Coin type Aurumcoin (SHA256)
 AURUM Au is a proof-of-work (PoW)
 Halving 150000 blocks
 Initial coins per block 1 coins

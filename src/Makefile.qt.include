@@ -1,85 +1,85 @@
-bin_PROGRAMS += qt/bitcoin-qt
-EXTRA_LIBRARIES += qt/libbitcoinqt.a
+bin_PROGRAMS += qt/aurumcoin-qt
+EXTRA_LIBRARIES += qt/libaurumcoinqt.a
 
-# bitcoin qt core #
+# aurumcoin qt core #
 QT_TS = \
-  qt/locale/bitcoin_af_ZA.ts \
-  qt/locale/bitcoin_ar.ts \
-  qt/locale/bitcoin_be_BY.ts \
-  qt/locale/bitcoin_bg_BG.ts \
-  qt/locale/bitcoin_bg.ts \
-  qt/locale/bitcoin_bs.ts \
-  qt/locale/bitcoin_ca_ES.ts \
-  qt/locale/bitcoin_ca.ts \
-  qt/locale/bitcoin_ca@valencia.ts \
-  qt/locale/bitcoin_cs_CZ.ts \
-  qt/locale/bitcoin_cs.ts \
-  qt/locale/bitcoin_cy.ts \
-  qt/locale/bitcoin_da.ts \
-  qt/locale/bitcoin_de.ts \
-  qt/locale/bitcoin_el_GR.ts \
-  qt/locale/bitcoin_el.ts \
-  qt/locale/bitcoin_en_GB.ts \
-  qt/locale/bitcoin_en.ts \
-  qt/locale/bitcoin_eo.ts \
-  qt/locale/bitcoin_es_CL.ts \
-  qt/locale/bitcoin_es_DO.ts \
-  qt/locale/bitcoin_es_ES.ts \
-  qt/locale/bitcoin_es_MX.ts \
-  qt/locale/bitcoin_es.ts \
-  qt/locale/bitcoin_es_UY.ts \
-  qt/locale/bitcoin_es_VE.ts \
-  qt/locale/bitcoin_et.ts \
-  qt/locale/bitcoin_eu_ES.ts \
-  qt/locale/bitcoin_fa_IR.ts \
-  qt/locale/bitcoin_fa.ts \
-  qt/locale/bitcoin_fi.ts \
-  qt/locale/bitcoin_fr_CA.ts \
-  qt/locale/bitcoin_fr_FR.ts \
-  qt/locale/bitcoin_fr.ts \
-  qt/locale/bitcoin_gl.ts \
-  qt/locale/bitcoin_he.ts \
-  qt/locale/bitcoin_hi_IN.ts \
-  qt/locale/bitcoin_hr.ts \
-  qt/locale/bitcoin_hu.ts \
-  qt/locale/bitcoin_id_ID.ts \
-  qt/locale/bitcoin_it.ts \
-  qt/locale/bitcoin_ja.ts \
-  qt/locale/bitcoin_ka.ts \
-  qt/locale/bitcoin_kk_KZ.ts \
-  qt/locale/bitcoin_ko_KR.ts \
-  qt/locale/bitcoin_ky.ts \
-  qt/locale/bitcoin_la.ts \
-  qt/locale/bitcoin_lt.ts \
-  qt/locale/bitcoin_lv_LV.ts \
-  qt/locale/bitcoin_mk_MK.ts \
-  qt/locale/bitcoin_mn.ts \
-  qt/locale/bitcoin_ms_MY.ts \
-  qt/locale/bitcoin_nb.ts \
-  qt/locale/bitcoin_nl.ts \
-  qt/locale/bitcoin_pam.ts \
-  qt/locale/bitcoin_pl.ts \
-  qt/locale/bitcoin_pt_BR.ts \
-  qt/locale/bitcoin_pt_PT.ts \
-  qt/locale/bitcoin_ro_RO.ts \
-  qt/locale/bitcoin_ru_RU.ts \
-  qt/locale/bitcoin_ru.ts \
-  qt/locale/bitcoin_sk.ts \
-  qt/locale/bitcoin_sl_SI.ts \
-  qt/locale/bitcoin_sq.ts \
-  qt/locale/bitcoin_sr.ts \
-  qt/locale/bitcoin_sv.ts \
-  qt/locale/bitcoin_th_TH.ts \
-  qt/locale/bitcoin_tr_TR.ts \
-  qt/locale/bitcoin_tr.ts \
-  qt/locale/bitcoin_uk.ts \
-  qt/locale/bitcoin_ur_PK.ts \
-  qt/locale/bitcoin_uz@Cyrl.ts \
-  qt/locale/bitcoin_vi.ts \
-  qt/locale/bitcoin_vi_VN.ts \
-  qt/locale/bitcoin_zh_CN.ts \
-  qt/locale/bitcoin_zh.ts \
-  qt/locale/bitcoin_zh_TW.ts
+  qt/locale/aurumcoin_af_ZA.ts \
+  qt/locale/aurumcoin_ar.ts \
+  qt/locale/aurumcoin_be_BY.ts \
+  qt/locale/aurumcoin_bg_BG.ts \
+  qt/locale/aurumcoin_bg.ts \
+  qt/locale/aurumcoin_bs.ts \
+  qt/locale/aurumcoin_ca_ES.ts \
+  qt/locale/aurumcoin_ca.ts \
+  qt/locale/aurumcoin_ca@valencia.ts \
+  qt/locale/aurumcoin_cs_CZ.ts \
+  qt/locale/aurumcoin_cs.ts \
+  qt/locale/aurumcoin_cy.ts \
+  qt/locale/aurumcoin_da.ts \
+  qt/locale/aurumcoin_de.ts \
+  qt/locale/aurumcoin_el_GR.ts \
+  qt/locale/aurumcoin_el.ts \
+  qt/locale/aurumcoin_en_GB.ts \
+  qt/locale/aurumcoin_en.ts \
+  qt/locale/aurumcoin_eo.ts \
+  qt/locale/aurumcoin_es_CL.ts \
+  qt/locale/aurumcoin_es_DO.ts \
+  qt/locale/aurumcoin_es_ES.ts \
+  qt/locale/aurumcoin_es_MX.ts \
+  qt/locale/aurumcoin_es.ts \
+  qt/locale/aurumcoin_es_UY.ts \
+  qt/locale/aurumcoin_es_VE.ts \
+  qt/locale/aurumcoin_et.ts \
+  qt/locale/aurumcoin_eu_ES.ts \
+  qt/locale/aurumcoin_fa_IR.ts \
+  qt/locale/aurumcoin_fa.ts \
+  qt/locale/aurumcoin_fi.ts \
+  qt/locale/aurumcoin_fr_CA.ts \
+  qt/locale/aurumcoin_fr_FR.ts \
+  qt/locale/aurumcoin_fr.ts \
+  qt/locale/aurumcoin_gl.ts \
+  qt/locale/aurumcoin_he.ts \
+  qt/locale/aurumcoin_hi_IN.ts \
+  qt/locale/aurumcoin_hr.ts \
+  qt/locale/aurumcoin_hu.ts \
+  qt/locale/aurumcoin_id_ID.ts \
+  qt/locale/aurumcoin_it.ts \
+  qt/locale/aurumcoin_ja.ts \
+  qt/locale/aurumcoin_ka.ts \
+  qt/locale/aurumcoin_kk_KZ.ts \
+  qt/locale/aurumcoin_ko_KR.ts \
+  qt/locale/aurumcoin_ky.ts \
+  qt/locale/aurumcoin_la.ts \
+  qt/locale/aurumcoin_lt.ts \
+  qt/locale/aurumcoin_lv_LV.ts \
+  qt/locale/aurumcoin_mk_MK.ts \
+  qt/locale/aurumcoin_mn.ts \
+  qt/locale/aurumcoin_ms_MY.ts \
+  qt/locale/aurumcoin_nb.ts \
+  qt/locale/aurumcoin_nl.ts \
+  qt/locale/aurumcoin_pam.ts \
+  qt/locale/aurumcoin_pl.ts \
+  qt/locale/aurumcoin_pt_BR.ts \
+  qt/locale/aurumcoin_pt_PT.ts \
+  qt/locale/aurumcoin_ro_RO.ts \
+  qt/locale/aurumcoin_ru_RU.ts \
+  qt/locale/aurumcoin_ru.ts \
+  qt/locale/aurumcoin_sk.ts \
+  qt/locale/aurumcoin_sl_SI.ts \
+  qt/locale/aurumcoin_sq.ts \
+  qt/locale/aurumcoin_sr.ts \
+  qt/locale/aurumcoin_sv.ts \
+  qt/locale/aurumcoin_th_TH.ts \
+  qt/locale/aurumcoin_tr_TR.ts \
+  qt/locale/aurumcoin_tr.ts \
+  qt/locale/aurumcoin_uk.ts \
+  qt/locale/aurumcoin_ur_PK.ts \
+  qt/locale/aurumcoin_uz@Cyrl.ts \
+  qt/locale/aurumcoin_vi.ts \
+  qt/locale/aurumcoin_vi_VN.ts \
+  qt/locale/aurumcoin_zh_CN.ts \
+  qt/locale/aurumcoin_zh.ts \
+  qt/locale/aurumcoin_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -104,10 +104,10 @@ QT_MOC_CPP = \
   qt/moc_addresstablemodel.cpp \
   qt/moc_askpassphrasedialog.cpp \
   qt/moc_bantablemodel.cpp \
-  qt/moc_bitcoinaddressvalidator.cpp \
-  qt/moc_bitcoinamountfield.cpp \
-  qt/moc_bitcoingui.cpp \
-  qt/moc_bitcoinunits.cpp \
+  qt/moc_aurumcoinaddressvalidator.cpp \
+  qt/moc_aurumcoinamountfield.cpp \
+  qt/moc_aurumcoingui.cpp \
+  qt/moc_aurumcoinunits.cpp \
   qt/moc_clientmodel.cpp \
   qt/moc_coincontroldialog.cpp \
   qt/moc_coincontroltreewidget.cpp \
@@ -145,35 +145,35 @@ QT_MOC_CPP = \
   qt/moc_walletmodel.cpp \
   qt/moc_walletview.cpp
 
-BITCOIN_MM = \
+AURUMCOIN_MM = \
   qt/macdockiconhandler.mm \
   qt/macnotificationhandler.mm
 
 QT_MOC = \
-  qt/bitcoin.moc \
-  qt/bitcoinamountfield.moc \
+  qt/aurumcoin.moc \
+  qt/aurumcoinamountfield.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
-QT_QRC_CPP = qt/qrc_bitcoin.cpp
-QT_QRC = qt/bitcoin.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_bitcoin_locale.cpp
-QT_QRC_LOCALE = qt/bitcoin_locale.qrc
+QT_QRC_CPP = qt/qrc_aurumcoin.cpp
+QT_QRC = qt/aurumcoin.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_aurumcoin_locale.cpp
+QT_QRC_LOCALE = qt/aurumcoin_locale.qrc
 
 PROTOBUF_CC = qt/paymentrequest.pb.cc
 PROTOBUF_H = qt/paymentrequest.pb.h
 PROTOBUF_PROTO = qt/paymentrequest.proto
 
-BITCOIN_QT_H = \
+AURUMCOIN_QT_H = \
   qt/addressbookpage.h \
   qt/addresstablemodel.h \
   qt/askpassphrasedialog.h \
   qt/bantablemodel.h \
-  qt/bitcoinaddressvalidator.h \
-  qt/bitcoinamountfield.h \
-  qt/bitcoingui.h \
-  qt/bitcoinunits.h \
+  qt/aurumcoinaddressvalidator.h \
+  qt/aurumcoinamountfield.h \
+  qt/aurumcoingui.h \
+  qt/aurumcoinunits.h \
   qt/clientmodel.h \
   qt/coincontroldialog.h \
   qt/coincontroltreewidget.h \
@@ -223,8 +223,8 @@ RES_ICONS = \
   qt/res/icons/address-book.png \
   qt/res/icons/about.png \
   qt/res/icons/about_qt.png \
-  qt/res/icons/bitcoin.ico \
-  qt/res/icons/bitcoin.png \
+  qt/res/icons/aurumcoin.ico \
+  qt/res/icons/aurumcoin.png \
   qt/res/icons/clock1.png \
   qt/res/icons/clock2.png \
   qt/res/icons/clock3.png \
@@ -267,12 +267,12 @@ RES_ICONS = \
   qt/res/icons/warning.png \
   qt/res/icons/verify.png
 
-BITCOIN_QT_CPP = \
+AURUMCOIN_QT_CPP = \
   qt/bantablemodel.cpp \
-  qt/bitcoinaddressvalidator.cpp \
-  qt/bitcoinamountfield.cpp \
-  qt/bitcoingui.cpp \
-  qt/bitcoinunits.cpp \
+  qt/aurumcoinaddressvalidator.cpp \
+  qt/aurumcoinamountfield.cpp \
+  qt/aurumcoingui.cpp \
+  qt/aurumcoinunits.cpp \
   qt/clientmodel.cpp \
   qt/csvmodelwriter.cpp \
   qt/guiutil.cpp \
@@ -291,11 +291,11 @@ BITCOIN_QT_CPP = \
   qt/utilitydialog.cpp
 
 if TARGET_WINDOWS
-BITCOIN_QT_CPP += qt/winshutdownmonitor.cpp
+AURUMCOIN_QT_CPP += qt/winshutdownmonitor.cpp
 endif
 
 if ENABLE_WALLET
-BITCOIN_QT_CPP += \
+AURUMCOIN_QT_CPP += \
   qt/addressbookpage.cpp \
   qt/addresstablemodel.cpp \
   qt/askpassphrasedialog.cpp \
@@ -328,19 +328,19 @@ RES_IMAGES =
 
 RES_MOVIES = $(wildcard qt/res/movies/spinner-*.png)
 
-BITCOIN_RC = qt/res/bitcoin-qt-res.rc
+AURUMCOIN_RC = qt/res/aurumcoin-qt-res.rc
 
-BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
+AURUMCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
   -I$(builddir)/qt/forms -DQT_NO_KEYWORDS
 
-qt_libbitcoinqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+qt_libaurumcoinqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(AURUMCOIN_INCLUDES) $(AURUMCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
-qt_libbitcoinqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_libaurumcoinqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_libbitcoinqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
+qt_libaurumcoinqt_a_SOURCES = $(AURUMCOIN_QT_CPP) $(AURUMCOIN_QT_H) $(QT_FORMS_UI) \
   $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES)
 
-nodist_qt_libbitcoinqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
+nodist_qt_libaurumcoinqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
   $(PROTOBUF_H) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
 
 # forms/foo.h -> forms/ui_foo.h
@@ -349,70 +349,70 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libbitcoinqt_a_OBJECTS) $(qt_bitcoin_qt_OBJECTS) : | $(QT_MOC)
+$(qt_libaurumcoinqt_a_OBJECTS) $(qt_aurumcoin_qt_OBJECTS) : | $(QT_MOC)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
 $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
-# bitcoin-qt binary #
-qt_bitcoin_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+# aurumcoin-qt binary #
+qt_aurumcoin_qt_CPPFLAGS = $(AM_CPPFLAGS) $(AURUMCOIN_INCLUDES) $(AURUMCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
-qt_bitcoin_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_aurumcoin_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_bitcoin_qt_SOURCES = qt/bitcoin.cpp
+qt_aurumcoin_qt_SOURCES = qt/aurumcoin.cpp
 if TARGET_DARWIN
-  qt_bitcoin_qt_SOURCES += $(BITCOIN_MM)
+  qt_aurumcoin_qt_SOURCES += $(AURUMCOIN_MM)
 endif
 if TARGET_WINDOWS
-  qt_bitcoin_qt_SOURCES += $(BITCOIN_RC)
+  qt_aurumcoin_qt_SOURCES += $(AURUMCOIN_RC)
 endif
-qt_bitcoin_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
+qt_aurumcoin_qt_LDADD = qt/libaurumcoinqt.a $(LIBAURUMCOIN_SERVER)
 if ENABLE_WALLET
-qt_bitcoin_qt_LDADD += $(LIBBITCOIN_WALLET)
+qt_aurumcoin_qt_LDADD += $(LIBAURUMCOIN_WALLET)
 endif
 if ENABLE_ZMQ
-qt_bitcoin_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+qt_aurumcoin_qt_LDADD += $(LIBAURUMCOIN_ZMQ) $(ZMQ_LIBS)
 endif
-qt_bitcoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+qt_aurumcoin_qt_LDADD += $(LIBAURUMCOIN_CLI) $(LIBAURUMCOIN_COMMON) $(LIBAURUMCOIN_UTIL) $(LIBAURUMCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-qt_bitcoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-qt_bitcoin_qt_LIBTOOLFLAGS = --tag CXX
+qt_aurumcoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_aurumcoin_qt_LIBTOOLFLAGS = --tag CXX
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
 
 SECONDARY: $(QT_QM)
 
-qt/bitcoinstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES)
+qt/aurumcoinstrings.cpp: $(libaurumcoin_server_a_SOURCES) $(libaurumcoin_wallet_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) ../share/qt/extract_strings_qt.py $^
 
-translate: qt/bitcoinstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: qt/aurumcoinstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(AURUMCOIN_QT_CPP) $(AURUMCOIN_QT_H) $(AURUMCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/bitcoin_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/aurumcoin_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@test -f $(@D)/$(<F) || cp -f $< $(@D)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name bitcoin_locale $(@D)/$(<F) | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name aurumcoin_locale $(@D)/$(<F) | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(PROTOBUF_H)
 	@test -f $(RCC)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name bitcoin $< | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name aurumcoin $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
-CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
+CLEAN_QT = $(nodist_qt_libaurumcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
 
 CLEANFILES += $(CLEAN_QT)
 
-bitcoin_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_bitcoin_qt_OBJECTS) qt/bitcoin-qt$(EXEEXT) $(LIBBITCOINQT)
+aurumcoin_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libaurumcoinqt_a_OBJECTS) $(qt_aurumcoin_qt_OBJECTS) qt/aurumcoin-qt$(EXEEXT) $(LIBAURUMCOINQT)
 
-bitcoin_qt : qt/bitcoin-qt$(EXEEXT)
+aurumcoin_qt : qt/aurumcoin-qt$(EXEEXT)
 
 ui_%.h: %.ui
 	@test -f $(UIC)

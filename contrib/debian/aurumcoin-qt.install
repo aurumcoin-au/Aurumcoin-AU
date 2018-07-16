@@ -1,0 +1,6 @@
+usr/local/bin/aurumcoin-qt usr/bin
+share/pixmaps/aurumcoin32.xpm usr/share/pixmaps
+share/pixmaps/aurumcoin16.xpm usr/share/pixmaps
+share/pixmaps/aurumcoin128.png usr/share/pixmaps
+debian/aurumcoin-qt.desktop usr/share/applications
+debian/aurumcoin-qt.protocol usr/share/kde4/services/

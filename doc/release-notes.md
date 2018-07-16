@@ -1,12 +1,12 @@
-Bitcoin Core version 0.12.1 is now available from:
+Aurumcoin Core version 0.12.1 is now available from:
 
-  <https://bitcoin.org/bin/bitcoin-core-0.12.1/>
+  <https://aurumcoin.org/bin/aurumcoin-core-0.12.1/>
 
 This is a new major version release, bringing new features and other improvements.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/bitcoin/bitcoin/issues>
+  <https://github.com/aurumcoin/aurumcoin/issues>
 
 Upgrading and downgrading
 =========================
@@ -16,8 +16,8 @@ How to Upgrade
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over /Applications/Bitcoin-Qt (on Mac) or
-bitcoind/bitcoin-qt (on Linux).
+installer (on Windows) or just copy over /Applications/Aurumcoin-Qt (on Mac) or
+aurumcoind/aurumcoin-qt (on Linux).
 
 Downgrade warning
 -----------------
@@ -26,10 +26,10 @@ Downgrade warning
 
 Because release 0.12.0 and later will obfuscate the chainstate on every
 fresh sync or reindex, the chainstate is not backwards-compatible with
-pre-0.12 versions of Bitcoin Core or other software.
+pre-0.12 versions of Aurumcoin Core or other software.
 
 If you want to downgrade after you have done a reindex with 0.12.0 or later,
-you will need to reindex when you first start Bitcoin Core version 0.11 or
+you will need to reindex when you first start Aurumcoin Core version 0.11 or
 earlier.
 
 Notable changes
@@ -74,5 +74,5 @@ Credits
 Thanks to everyone who directly contributed to this release:
 
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/bitcoin/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/aurumcoin/).
 

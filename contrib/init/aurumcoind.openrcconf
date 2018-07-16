@@ -1,0 +1,33 @@
+# /etc/conf.d/aurumcoind: config file for /etc/init.d/aurumcoind
+
+# Config file location
+#AURUMCOIND_CONFIGFILE="/etc/aurumcoin/aurumcoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $AURUMCOIND_USER)
+#AURUMCOIND_PIDDIR="/var/run/aurumcoind"
+
+# What filename to give the pidfile
+#AURUMCOIND_PIDFILE="${AURUMCOIND_PIDDIR}/aurumcoind.pid"
+
+# Where to write aurumcoind data (be mindful that the blockchain is large)
+#AURUMCOIND_DATADIR="/var/lib/aurumcoind"
+
+# User and group to own aurumcoind process
+#AURUMCOIND_USER="aurumcoin"
+#AURUMCOIND_GROUP="aurumcoin"
+
+# Path to aurumcoind executable
+#AURUMCOIND_BIN="/usr/bin/aurumcoind"
+
+# Nice value to run aurumcoind under
+#AURUMCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+AURUMCOIND_OPTS="-disablewallet"
+
+# The timeout in seconds OpenRC will wait for aurumcoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+AURUMCOIND_SIGTERM_TIMEOUT=60

@@ -1,0 +1,22 @@
+[Unit]
+Description=Aurumcoin's distributed currency daemon
+After=network.target
+
+[Service]
+User=aurumcoin
+Group=aurumcoin
+
+Type=forking
+PIDFile=/var/lib/aurumcoind/aurumcoind.pid
+ExecStart=/usr/bin/aurumcoind -daemon -pid=/var/lib/aurumcoind/aurumcoind.pid \
+-conf=/etc/aurumcoin/aurumcoin.conf -datadir=/var/lib/aurumcoind -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

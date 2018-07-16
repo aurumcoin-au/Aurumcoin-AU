@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_WALLET_ISMINE_H
-#define BITCOIN_WALLET_WALLET_ISMINE_H
+#ifndef AURUMCOIN_WALLET_WALLET_ISMINE_H
+#define AURUMCOIN_WALLET_WALLET_ISMINE_H
 
 #include "script/standard.h"
 
@@ -31,4 +31,4 @@ typedef uint8_t isminefilter;
 isminetype IsMine(const CKeyStore& keystore, const CScript& scriptPubKey);
 isminetype IsMine(const CKeyStore& keystore, const CTxDestination& dest);
 
-#endif // BITCOIN_WALLET_WALLET_ISMINE_H
+#endif // AURUMCOIN_WALLET_WALLET_ISMINE_H

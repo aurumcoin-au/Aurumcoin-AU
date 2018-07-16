@@ -7,12 +7,12 @@
 # Test PrioritiseTransaction code
 #
 
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import AurumcoinTestFramework
 from test_framework.util import *
 
 COIN = 100000000
 
-class PrioritiseTransactionTest(BitcoinTestFramework):
+class PrioritiseTransactionTest(AurumcoinTestFramework):
 
     def __init__(self):
         self.txouts = gen_return_txouts()

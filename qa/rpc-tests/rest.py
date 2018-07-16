@@ -8,7 +8,7 @@
 #
 
 
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import AurumcoinTestFramework
 from test_framework.util import *
 from struct import *
 import binascii
@@ -50,7 +50,7 @@ def http_post_call(host, port, path, requestdata = '', response_object = 0):
 
     return conn.getresponse().read()
 
-class RESTTest (BitcoinTestFramework):
+class RESTTest (AurumcoinTestFramework):
     FORMAT_SEPARATOR = "."
 
     def setup_chain(self):

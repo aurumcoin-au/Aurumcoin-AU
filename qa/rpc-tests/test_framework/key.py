@@ -2,7 +2,7 @@
 #
 # key.py - OpenSSL wrapper
 #
-# This file is modified from python-bitcoinlib.
+# This file is modified from python-aurumcoinlib.
 #
 
 """ECC secp256k1 crypto routines

@@ -5,7 +5,7 @@
 
 # Exercise the listreceivedbyaddress API
 
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import AurumcoinTestFramework
 from test_framework.util import *
 
 
@@ -51,7 +51,7 @@ def check_array_result(object_array, to_match, expected, should_not_find = False
     if num_matched > 0 and should_not_find == True:
         raise AssertionError("Objects was matched %s"%(str(to_match)))
 
-class ReceivedByTest(BitcoinTestFramework):
+class ReceivedByTest(AurumcoinTestFramework):
 
     def run_test(self):
         '''

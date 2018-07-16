@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UI_INTERFACE_H
-#define BITCOIN_UI_INTERFACE_H
+#ifndef AURUMCOIN_UI_INTERFACE_H
+#define AURUMCOIN_UI_INTERFACE_H
 
 #include <stdint.h>
 #include <string>
@@ -103,4 +103,4 @@ public:
 
 extern CClientUIInterface uiInterface;
 
-#endif // BITCOIN_UI_INTERFACE_H
+#endif // AURUMCOIN_UI_INTERFACE_H

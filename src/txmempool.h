@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TXMEMPOOL_H
-#define BITCOIN_TXMEMPOOL_H
+#ifndef AURUMCOIN_TXMEMPOOL_H
+#define AURUMCOIN_TXMEMPOOL_H
 
 #include <list>
 #include <set>
@@ -604,4 +604,4 @@ struct TxCoinAgePriorityCompare
     }
 };
 
-#endif // BITCOIN_TXMEMPOOL_H
+#endif // AURUMCOIN_TXMEMPOOL_H

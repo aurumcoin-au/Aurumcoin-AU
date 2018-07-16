@@ -3,7 +3,7 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import AurumcoinTestFramework
 from test_framework.util import *
 
 from binascii import a2b_hex, b2a_hex
@@ -87,7 +87,7 @@ def assert_template(node, tmpl, txlist, expect):
     if rsp != expect:
         raise AssertionError('unexpected: %s' % (rsp,))
 
-class GetBlockTemplateProposalTest(BitcoinTestFramework):
+class GetBlockTemplateProposalTest(AurumcoinTestFramework):
     '''
     Test block proposals with getblocktemplate.
     '''

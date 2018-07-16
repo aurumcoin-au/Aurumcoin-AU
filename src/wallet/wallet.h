@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_WALLET_H
-#define BITCOIN_WALLET_WALLET_H
+#ifndef AURUMCOIN_WALLET_WALLET_H
+#define AURUMCOIN_WALLET_WALLET_H
 
 #include "amount.h"
 #include "streams.h"
@@ -935,4 +935,4 @@ private:
     std::vector<char> _ssExtra;
 };
 
-#endif // BITCOIN_WALLET_WALLET_H
+#endif // AURUMCOIN_WALLET_WALLET_H
