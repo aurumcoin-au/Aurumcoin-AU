@@ -3317,8 +3317,8 @@
         <translation>SOCKS5 プロキシ経由で接続する</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
-        <translation>Copyright (C) 2017-%i Bitcoin(AU) Core 開発者</translation>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
+        <translation>Copyright (C) 2017-%i Aurumcoin(AU) Core 開発者</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Aurumcoin AU</source>

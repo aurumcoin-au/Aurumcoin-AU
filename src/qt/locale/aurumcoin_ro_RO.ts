@@ -2920,7 +2920,7 @@
         <translation>Conectare prin proxy SOCKS5</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
         <translation>Copyright (C) 2017-%i Dezvoltatorii Bitcoin</translation>
     </message>
     <message>

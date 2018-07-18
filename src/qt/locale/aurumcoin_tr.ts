@@ -3316,7 +3316,7 @@
         <translation>SOCKS5 vekil sunucusu vasıtasıyla bağlan</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
         <translation>Telif hakkı 2017-%i Aurumcoin Çekirdeği Geliştiricileri</translation>
     </message>
     <message>

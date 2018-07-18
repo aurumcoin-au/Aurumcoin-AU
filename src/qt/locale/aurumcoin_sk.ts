@@ -2990,7 +2990,7 @@ The network does not appear to fully agree! Some miners appear to be experiencin
         <translation>Pripojiť cez proxy server SOCKS5</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
         <translation>Autorské práva (C) 2017-%i Vývojári jadra Aurumcoin</translation>
     </message>
     <message>

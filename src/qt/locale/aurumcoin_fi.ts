@@ -3136,7 +3136,7 @@
         <translation>Yhdistä SOCKS5 proxin kautta</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
         <translation>Copyright (C) 2017-%i  Bitcoin kehittäjät</translation>
     </message>
     <message>

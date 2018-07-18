@@ -3317,8 +3317,8 @@ Var vänlig och försök igen.</translation>
         <translation>Anslut genom SOCKS5 proxy</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
-        <translation>Copyright (C) 2017-%i Bitcoin(AU) Core Utvecklarna</translation>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
+        <translation>Copyright (C) 2017-%i Aurumcoin(AU) Core Utvecklarna</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Aurumcoin AU</source>

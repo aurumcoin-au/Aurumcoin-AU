@@ -3316,7 +3316,7 @@
         <translation>Подключаться через SOCKS5 прокси</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
         <translation>Все права защищены © 2017-%i Разработчики Aurumcoin(AU) Core</translation>
     </message>
     <message>

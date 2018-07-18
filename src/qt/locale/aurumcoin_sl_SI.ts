@@ -3020,8 +3020,8 @@
         <translation>Poveži se preko posredniškega strežnika SOCKS5</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
-        <translation>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</translation>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
+        <translation>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</translation>
     </message>
     <message>
         <source>Information</source>

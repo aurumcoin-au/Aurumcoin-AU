@@ -3296,7 +3296,7 @@
         <translation>Über einen SOCKS5-Proxy &amp;verbinden</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
         <translation>Urheberrecht (C) 2017-%i Die Aurumcoin(AU) Core-Entwickler</translation>
     </message>
     <message>

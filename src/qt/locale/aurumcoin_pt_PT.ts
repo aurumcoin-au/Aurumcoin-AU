@@ -2921,8 +2921,8 @@
         <translation>Não foi possível resolver o endereço -whitebind: '%s'</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
-        <translation>Copyright (C) 2017-%i Os Programadores do Bitcoin(AU) Core</translation>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
+        <translation>Copyright (C) 2017-%i Os Programadores do Aurumcoin(AU) Core</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Aurumcoin AU</source>

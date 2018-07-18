@@ -4266,7 +4266,7 @@
     </message>
     <message>
         <location line="+3"/>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

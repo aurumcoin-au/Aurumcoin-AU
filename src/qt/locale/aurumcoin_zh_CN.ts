@@ -3289,7 +3289,7 @@
         <translation>通过 SOCKS5 代理连接</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
         <translation>版权所有 (C) 2017-%i Aurumcoin(AU) Core 开发者</translation>
     </message>
     <message>

@@ -3317,7 +3317,7 @@
         <translation>透過 SOCKS5 代理伺服器連線</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
         <translation>版權為比特幣核心開發人員自西元 2009 至 %i 年起所有</translation>
     </message>
     <message>

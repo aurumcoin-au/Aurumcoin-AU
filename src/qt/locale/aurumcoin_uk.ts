@@ -3316,7 +3316,7 @@
         <translation>Підключитись через SOCKS5-проксі</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
         <translation>(C) 2017-%i Розробники Aurumcoin(AU) Core</translation>
     </message>
     <message>

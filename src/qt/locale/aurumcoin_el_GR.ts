@@ -2652,7 +2652,7 @@
         <translation>Σύνδεση μέσω διαμεσολαβητή SOCKS5</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
         <translation>Πνευματικά δικαιώματα 2017-%i Οι προγραμματιστές του Aurumcoin(AU) Core</translation>
     </message>
     <message>

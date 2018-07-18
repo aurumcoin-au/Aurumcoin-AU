@@ -3316,8 +3316,8 @@
         <translation>Se connecter par un mandataire SOCKS5</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
-        <translation>Copyright © 2017-%i Les développeurs de Bitcoin(AU) Core</translation>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
+        <translation>Copyright © 2017-%i Les développeurs de Aurumcoin(AU) Core</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Aurumcoin AU</source>

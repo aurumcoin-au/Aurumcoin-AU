@@ -2456,7 +2456,7 @@
         <translation>Свързване чрез SOCKS5  прокси</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
         <translation>Всички права запазени (C) 2017-%i Доставчиците на Aurumcoin, Aurumcoin AU</translation>
     </message>
     <message>

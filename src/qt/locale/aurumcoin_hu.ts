@@ -2429,8 +2429,8 @@
         <translation>Külső cím (-whitebind address) feloldása nem sikerült: '%s'</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bitcoin(AU) Core Developers</source>
-        <translation>Copyright (C) 2017-%i A Bitcoin(AU) Core Fejlesztői</translation>
+        <source>Copyright (C) 2017-%i The Aurumcoin(AU) Core Developers</source>
+        <translation>Copyright (C) 2017-%i A Aurumcoin(AU) Core Fejlesztői</translation>
     </message>
     <message>
         <source>Error reading from database, shutting down.</source>
