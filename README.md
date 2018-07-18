@@ -25,15 +25,17 @@ RPC port
 21080
 
 
-HOMEPAGE
-http://aurumcoin-au.com
+HOMEPAGE (community)
+https://aurumcoin-au.com
 
-TWITTER
-
+TWITTER (community)
 https://twitter.com/Aurumcoin
 
-FACEBOOK
+FACEBOOK (community)
+https://www.facebook.com/AurumcoinAU/
 
-https://www.facebook.com/profile.php?id=100007292027196
 
-
+Social Network aurumcoin.com Team:
+https:/aurumcoin.com
+https://twitter.com/Aurum_Coin
+https://www.facebook.com/aurumcoin
