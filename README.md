@@ -37,7 +37,7 @@ https://www.facebook.com/AurumcoinAU/
 
 Social Network aurumcoin.com Team:
 
-https://aurumcoin.com
+http://aurumcoin.com
 
 https://twitter.com/Aurum_Coin
 
