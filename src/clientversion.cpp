@@ -19,7 +19,7 @@ using util::Join;
  * for both bitcoind and bitcoin-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string UA_NAME("Satoshi");
+const std::string UA_NAME("Aurum"); // Aurumcoin: same as legacy 0.12 client
 
 
 #include <bitcoin-build-info.h> // IWYU pragma: keep

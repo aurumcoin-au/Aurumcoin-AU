@@ -26,7 +26,7 @@ get_directory_property(precious_variables CACHE_VARIABLES)
 #=============================
 # Project / Package metadata
 #=============================
-set(CLIENT_NAME "Bitcoin Core")
+set(CLIENT_NAME "Aurumcoin AU")
 set(CLIENT_VERSION_MAJOR 32)
 set(CLIENT_VERSION_MINOR 1)
 set(CLIENT_VERSION_BUILD 0)
@@ -52,8 +52,8 @@ set(CMAKE_TRY_COMPILE_PLATFORM_VARIABLES
 
 project(BitcoinCore
   VERSION ${CLIENT_VERSION_MAJOR}.${CLIENT_VERSION_MINOR}.${CLIENT_VERSION_BUILD}
-  DESCRIPTION "Bitcoin client software"
-  HOMEPAGE_URL "https://bitcoincore.org/"
+  DESCRIPTION "Aurumcoin client software"
+  HOMEPAGE_URL "https://github.com/aurumcoin-au/Aurumcoin-AU"
   LANGUAGES NONE
 )
 
@@ -64,7 +64,7 @@ endif()
 
 set(COPYRIGHT_HOLDERS "The %s developers")
 set(COPYRIGHT_HOLDERS_FINAL "The ${CLIENT_NAME} developers")
-set(CLIENT_BUGREPORT "https://github.com/bitcoin/bitcoin/issues")
+set(CLIENT_BUGREPORT "https://github.com/aurumcoin-au/Aurumcoin-AU/issues")
 
 #=============================
 # Language setup
@@ -650,26 +650,26 @@ message("\n")
 message("Configure summary")
 message("=================")
 message("Executables:")
-message("  bitcoin ............................. ${BUILD_BITCOIN_BIN}")
-message("  bitcoind ............................ ${BUILD_DAEMON}")
+message("  aurumcoin ........................... ${BUILD_BITCOIN_BIN}")
+message("  aurumcoind .......................... ${BUILD_DAEMON}")
 if(BUILD_DAEMON AND ENABLE_IPC)
   set(bitcoin_daemon_status ON)
 else()
   set(bitcoin_daemon_status OFF)
 endif()
-message("  bitcoin-node (multiprocess) ......... ${bitcoin_daemon_status}")
-message("  bitcoin-qt (GUI) .................... ${BUILD_GUI}")
+message("  aurumcoin-node (multiprocess) ....... ${bitcoin_daemon_status}")
+message("  aurumcoin-qt (GUI) .................. ${BUILD_GUI}")
 if(BUILD_GUI AND ENABLE_IPC)
   set(bitcoin_gui_status ON)
 else()
   set(bitcoin_gui_status OFF)
 endif()
-message("  bitcoin-gui (GUI, multiprocess) ..... ${bitcoin_gui_status}")
-message("  bitcoin-cli ......................... ${BUILD_CLI}")
-message("  bitcoin-tx .......................... ${BUILD_TX}")
-message("  bitcoin-util ........................ ${BUILD_UTIL}")
-message("  bitcoin-wallet ...................... ${BUILD_WALLET_TOOL}")
-message("  bitcoin-chainstate (experimental) ... ${BUILD_UTIL_CHAINSTATE}")
+message("  aurumcoin-gui (GUI, multiprocess) ... ${bitcoin_gui_status}")
+message("  aurumcoin-cli ....................... ${BUILD_CLI}")
+message("  aurumcoin-tx ........................ ${BUILD_TX}")
+message("  aurumcoin-util ...................... ${BUILD_UTIL}")
+message("  aurumcoin-wallet .................... ${BUILD_WALLET_TOOL}")
+message("  aurumcoin-chainstate (experimental) . ${BUILD_UTIL_CHAINSTATE}")
 message("  libbitcoinkernel (experimental) ..... ${BUILD_KERNEL_LIB}")
 message("  kernel-test (experimental) .......... ${BUILD_KERNEL_TEST}")
 message("Optional features:")
@@ -691,9 +691,9 @@ message("  USDT tracing ........................ ${WITH_USDT}")
 message("  QR code (GUI) ....................... ${WITH_QRENCODE}")
 message("  DBus (GUI) .......................... ${WITH_DBUS}")
 message("Tests:")
-message("  test_bitcoin ........................ ${BUILD_TESTS}")
-message("  test_bitcoin-qt ..................... ${BUILD_GUI_TESTS}")
-message("  bench_bitcoin ....................... ${BUILD_BENCH}")
+message("  test_aurumcoin ...................... ${BUILD_TESTS}")
+message("  test_aurumcoin-qt ................... ${BUILD_GUI_TESTS}")
+message("  bench_aurumcoin ..................... ${BUILD_BENCH}")
 message("  fuzz binary ......................... ${BUILD_FUZZ_BINARY}")
 message("")
 if(CMAKE_CROSSCOMPILING)

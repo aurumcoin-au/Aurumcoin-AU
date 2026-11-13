@@ -61,11 +61,11 @@ class HTTPBasicsTest(BitcoinTestFramework):
         self.password = lines[3]
 
         self.stop_nodes()
-        with open(self.nodes[0].datadir_path / "bitcoin.conf", "a") as f:
+        with open(self.nodes[0].datadir_path / "aurumcoin.conf", "a") as f:
             f.write(rpcauth + "\n")
             f.write(rpcauth2 + "\n")
             f.write(rpcauth3 + "\n")
-        with open(self.nodes[1].datadir_path / "bitcoin.conf", "a") as f:
+        with open(self.nodes[1].datadir_path / "aurumcoin.conf", "a") as f:
             f.write("rpcuser={}\n".format(self.rpcuser))
             f.write("rpcpassword={}\n".format(self.rpcpassword))
         self.start_nodes()

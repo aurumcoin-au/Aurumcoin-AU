@@ -334,14 +334,14 @@ def get_binary_paths(config):
 
     paths = types.SimpleNamespace()
     binaries = {
-        "bitcoin": "BITCOIN_BIN",
-        "bitcoind": "BITCOIND",
-        "bench_bitcoin": "BITCOIN_BENCH",
-        "bitcoin-cli": "BITCOINCLI",
-        "bitcoin-util": "BITCOINUTIL",
-        "bitcoin-tx": "BITCOINTX",
-        "bitcoin-chainstate": "BITCOINCHAINSTATE",
-        "bitcoin-wallet": "BITCOINWALLET",
+        "aurumcoin": "BITCOIN_BIN",
+        "aurumcoind": "BITCOIND",
+        "bench_aurumcoin": "BITCOIN_BENCH",
+        "aurumcoin-cli": "BITCOINCLI",
+        "aurumcoin-util": "BITCOINUTIL",
+        "aurumcoin-tx": "BITCOINTX",
+        "aurumcoin-chainstate": "BITCOINCHAINSTATE",
+        "aurumcoin-wallet": "BITCOINWALLET",
     }
     # Set paths to bitcoin core binaries allowing overrides with environment
     # variables.
@@ -511,7 +511,7 @@ def initialize_datadir(dirname, n, chain, disable_autoconnect=True):
     datadir = get_datadir_path(dirname, n)
     if not os.path.isdir(datadir):
         os.makedirs(datadir)
-    write_config(os.path.join(datadir, "bitcoin.conf"), n=n, chain=chain, disable_autoconnect=disable_autoconnect)
+    write_config(os.path.join(datadir, "aurumcoin.conf"), n=n, chain=chain, disable_autoconnect=disable_autoconnect)
     os.makedirs(os.path.join(datadir, 'stderr'), exist_ok=True)
     os.makedirs(os.path.join(datadir, 'stdout'), exist_ok=True)
     return datadir
@@ -596,7 +596,7 @@ def get_temp_default_datadir(temp_dir: pathlib.Path) -> tuple[dict, pathlib.Path
 
 
 def append_config(datadir, options):
-    with open(os.path.join(datadir, "bitcoin.conf"), 'a') as f:
+    with open(os.path.join(datadir, "aurumcoin.conf"), 'a') as f:
         for option in options:
             f.write(option + "\n")
 
@@ -604,8 +604,8 @@ def append_config(datadir, options):
 def get_auth_cookie(datadir, chain):
     user = None
     password = None
-    if os.path.isfile(os.path.join(datadir, "bitcoin.conf")):
-        with open(os.path.join(datadir, "bitcoin.conf"), 'r') as f:
+    if os.path.isfile(os.path.join(datadir, "aurumcoin.conf")):
+        with open(os.path.join(datadir, "aurumcoin.conf"), 'r') as f:
             for line in f:
                 if line.startswith("rpcuser="):
                     assert user is None  # Ensure that there is only one rpcuser line

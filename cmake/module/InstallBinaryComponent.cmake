@@ -13,6 +13,9 @@ function(install_binary_component component)
     ""                          # multi_value_keywords
   )
   set(target_name ${component})
+  # Aurumcoin: executables are named aurumcoin* (target names stay bitcoin*).
+  string(REPLACE "bitcoin" "aurumcoin" output_name ${target_name})
+  set_target_properties(${target_name} PROPERTIES OUTPUT_NAME ${output_name})
   if(IC_INTERNAL)
     set(runtime_dest ${CMAKE_INSTALL_LIBEXECDIR})
   else()
@@ -25,6 +28,7 @@ function(install_binary_component component)
   if(INSTALL_MAN AND IC_HAS_MANPAGE)
     install(FILES ${PROJECT_SOURCE_DIR}/doc/man/${target_name}.1
       DESTINATION ${CMAKE_INSTALL_MANDIR}/man1
+      RENAME ${output_name}.1
       COMPONENT ${component}
     )
   endif()

@@ -94,7 +94,7 @@ public:
             // bitcoin-node process and connect to it.
             address = "unix";
             try {
-                fd = m_process->connect(gArgs.GetDataDirNet(), "bitcoin-node", address);
+                fd = m_process->connect(gArgs.GetDataDirNet(), "aurumcoin-node", address);
             } catch (const std::system_error& e) {
                 // If connection type is auto and socket path isn't accepting connections, or doesn't exist, catch the error and return null;
                 if (e.code() == std::errc::connection_refused || e.code() == std::errc::no_such_file_or_directory || e.code() == std::errc::not_a_directory) {
@@ -106,7 +106,7 @@ public:
                return nullptr;
             }
         } else {
-            fd = m_process->connect(gArgs.GetDataDirNet(), "bitcoin-node", address);
+            fd = m_process->connect(gArgs.GetDataDirNet(), "aurumcoin-node", address);
         }
         return m_protocol->connect(m_protocol->makeStream(fd));
     }
