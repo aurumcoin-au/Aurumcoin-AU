@@ -1,79 +1,90 @@
-Bitcoin Core integration/staging tree
-=====================================
+Aurumcoin AU
+============
 
-https://bitcoincore.org
+Aurumcoin (AU) is a SHA256 proof-of-work cryptocurrency with a fixed supply of
+300,000 AU. This repository contains the Aurumcoin full node software, based on
+**Bitcoin Core v32.1**. It replaces the legacy Aurumcoin client 0.12.4 (based on
+Bitcoin Core 0.12.0), which is no longer maintained.
 
-For an immediately usable, binary version of the Bitcoin Core software, see
-https://bitcoincore.org/en/download/.
+> **Status: test version ("Version A").** The consensus rules are identical to
+> the legacy 0.12 client, so this software can run alongside existing 0.12
+> nodes. It has validated the complete existing chain (height 1,348,395) with
+> full script verification. It is not yet an official release.
 
-What is Bitcoin Core?
+Coin properties
+---------------
+
+| Property | Value |
+|---|---|
+| Algorithm | SHA256 proof-of-work |
+| Block reward | 1 AU, halving every 150,000 blocks |
+| Maximum supply | 300,000 AU |
+| Block time | 60 seconds |
+| Difficulty retarget | every 300 blocks, every 2 blocks from height 1,086,560 |
+| Coinbase maturity | 2 blocks |
+| P2P port / RPC port | 11080 / 21080 |
+| Address format | legacy (Base58, same prefixes as Bitcoin) |
+| SegWit / Taproot | not active |
+
+Programs and files
+------------------
+
+| | |
+|---|---|
+| Daemon | `aurumcoind` |
+| RPC client | `aurumcoin-cli` |
+| Tools | `aurumcoin-tx`, `aurumcoin-util`, `aurumcoin-wallet`, `aurumcoin` (wrapper) |
+| Data directory | Linux `~/.aurumcoin`, Windows `%APPDATA%\Aurumcoin` (if it exists, as used by 0.12) or `%LOCALAPPDATA%\Aurumcoin`, macOS `~/Library/Application Support/Aurumcoin` |
+| Configuration file | `aurumcoin.conf` |
+
+Building (Linux / WSL, Ubuntu 24.04 or newer)
+---------------------------------------------
+
+```sh
+sudo apt install build-essential cmake pkgconf python3 libevent-dev libboost-dev libsqlite3-dev git
+cmake -B build -DENABLE_IPC=OFF -DWITH_ZMQ=OFF -DBUILD_GUI=OFF -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j$(nproc)
+```
+
+The programs are placed in `build/bin/`. See [doc/build-unix.md](doc/build-unix.md)
+for more build options.
+
+Importing the existing chain
+----------------------------
+
+A complete chain can be imported from a bootstrap file:
+
+```sh
+./build/bin/aurumcoind -daemon -loadblock=/path/to/bootstrap.dat
+./build/bin/aurumcoin-cli getblockchaininfo
+```
+
+Wallets
+-------
+
+The wallet creates legacy addresses only, because SegWit is not active on the
+Aurumcoin network. Wallets from the 0.12 client (`wallet.dat`) can be converted
+with the `migratewallet` RPC. **Always make a backup of `wallet.dat` first.**
+
+Porting documentation
 ---------------------
 
-Bitcoin Core connects to the Bitcoin peer-to-peer network to download and fully
-validate blocks and transactions. It also includes a wallet and graphical user
-interface, which can be optionally built.
+Details about the port from 0.12 to Bitcoin Core v32.1 (in German):
 
-Further information about Bitcoin Core is available in the [doc folder](/doc).
+- [doc/aurumcoin/AUSGANGSSITUATION_UND_ZIEL.md](doc/aurumcoin/AUSGANGSSITUATION_UND_ZIEL.md): starting point and goals
+- [doc/aurumcoin/PORTING.md](doc/aurumcoin/PORTING.md): consensus rules, pitfalls, checklist and test results
+
+The original Bitcoin Core README is in [doc/README-bitcoin-core.md](doc/README-bitcoin-core.md).
+
+Links
+-----
+
+- Source code and issues: https://github.com/aurumcoin-au/Aurumcoin-AU
+- Community homepage: https://aurumcoin-au.com
 
 License
 -------
 
-Bitcoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
-information or see https://opensource.org/license/MIT.
-
-Development Process
--------------------
-
-The `master` branch is regularly built (see `doc/build-*.md` for instructions) and tested, but it is not guaranteed to be
-completely stable. [Tags](https://github.com/bitcoin/bitcoin/tags) are created
-regularly from release branches to indicate new official, stable release versions of Bitcoin Core.
-
-The https://github.com/bitcoin-core/gui repository is used exclusively for the
-development of the GUI. Its master branch is identical in all monotree
-repositories. Release branches and tags do not exist, so please do not fork
-that repository unless it is for development reasons.
-
-The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md)
-and useful hints for developers can be found in [doc/developer-notes.md](doc/developer-notes.md).
-
-Testing
--------
-
-Testing and code review is the bottleneck for development; we get more pull
-requests than we can review and test on short notice. Please be patient and help out by testing
-other people's pull requests, and remember this is a security-critical project where any mistake might cost people
-lots of money.
-
-### Automated Testing
-
-Developers are strongly encouraged to write [unit tests](src/test/README.md) for new code, and to
-submit new unit tests for old code. Unit tests can be compiled and run
-(assuming they weren't disabled during the generation of the build system) with: `ctest`. Further details on running
-and extending unit tests can be found in [/src/test/README.md](/src/test/README.md).
-
-There are also [regression and integration tests](/test), written
-in Python.
-These tests can be run (if the [test dependencies](/test) are installed) with: `build/test/functional/test_runner.py`
-(assuming `build` is your build directory).
-
-The CI (Continuous Integration) systems make sure that every pull request is tested on Windows, Linux, and macOS.
-The CI must pass on all commits before merge to avoid unrelated CI failures on new pull requests.
-
-### Manual Quality Assurance (QA) Testing
-
-Changes should be tested by somebody other than the developer who wrote the
-code. This is especially important for large or high-risk changes. It is useful
-to add a test plan to the pull request description if testing the changes is
-not straightforward.
-
-Translations
-------------
-
-Changes to translations as well as new translations can be submitted to
-[Bitcoin Core's Transifex page](https://explore.transifex.com/bitcoin/bitcoin/).
-
-Translations are periodically pulled from Transifex and merged into the git repository. See the
-[translation process](doc/translation_process.md) for details on how this works.
-
-**Important**: We do not accept translation changes as GitHub pull requests because the next
-pull from Transifex would automatically overwrite them again.
+Aurumcoin AU is released under the terms of the MIT license. See
+[COPYING](COPYING) for more information. It is based on Bitcoin Core,
+Copyright (c) 2009-2026 The Bitcoin Core developers.
