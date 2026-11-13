@@ -800,6 +800,22 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
     if (tx.IsCoinBase())
         return state.Invalid(TxValidationResult::TX_CONSENSUS, "coinbase");
 
+    // Aurumcoin: while segwit is not active, witness data would make the next
+    // block invalid ("unexpected-witness"), and outputs to witness programs
+    // would be anyone-can-spend for legacy nodes. Keep both out of the mempool.
+    if (!DeploymentActiveAfter(m_active_chainstate.m_chain.Tip(), m_active_chainstate.m_chainman, Consensus::DEPLOYMENT_SEGWIT)) {
+        if (tx.HasWitness()) {
+            return state.Invalid(TxValidationResult::TX_NOT_STANDARD, "no-witness-yet");
+        }
+        for (const CTxOut& txout : tx.vout) {
+            int witness_version;
+            std::vector<unsigned char> witness_program;
+            if (txout.scriptPubKey.IsWitnessProgram(witness_version, witness_program)) {
+                return state.Invalid(TxValidationResult::TX_NOT_STANDARD, "scriptpubkey-witness-inactive");
+            }
+        }
+    }
+
     // Rather not work on nonstandard transactions (unless -testnet/-regtest)
     std::string reason;
     if (m_pool.m_opts.require_standard && !IsStandardTx(tx, m_pool.m_opts.max_datacarrier_bytes, m_pool.m_opts.permit_bare_multisig, m_pool.m_opts.dust_relay_feerate, reason)) {
@@ -1837,8 +1853,9 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
     if (halvings >= 64)
         return 0;
 
-    CAmount nSubsidy = 50 * COIN;
-    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
+    // Aurumcoin: initial subsidy is a chain parameter (1 AU on mainnet).
+    CAmount nSubsidy = consensusParams.nInitialSubsidy;
+    // Subsidy is cut in half every nSubsidyHalvingInterval blocks.
     nSubsidy >>= halvings;
     return nSubsidy;
 }
@@ -2264,6 +2281,15 @@ script_verify_flags GetBlockScriptFlags(const CBlockIndex& block_index, const Ch
         flags = it->second;
     }
 
+    // Aurumcoin: the legacy 0.12 chain never activated segwit/taproot, so
+    // witness programs must keep their pre-segwit (anyone-can-spend)
+    // semantics until segwit activates. Otherwise a block valid for 0.12
+    // nodes could be rejected here and split the chain.
+    if (consensusparams.witness_flags_require_segwit &&
+        !DeploymentActiveAt(block_index, chainman, Consensus::DEPLOYMENT_SEGWIT)) {
+        flags &= ~(SCRIPT_VERIFY_WITNESS | SCRIPT_VERIFY_TAPROOT);
+    }
+
     // Enforce the DERSIG (BIP66) rule
     if (DeploymentActiveAt(block_index, chainman, Consensus::DEPLOYMENT_DERSIG)) {
         flags |= SCRIPT_VERIFY_DERSIG;
@@ -2456,14 +2482,20 @@ bool Chainstate::ConnectBlock(const CBlock& block, BlockValidationState& state, 
     // post BIP34 before approximately height 486,000,000. After block
     // 1,983,702 testnet3 starts doing unnecessary BIP30 checking again.
     assert(pindex->pprev);
-    CBlockIndex* pindexBIP34height = pindex->pprev->GetAncestor(params.GetConsensus().BIP34Height);
+    const Consensus::Params& consensus_params{params.GetConsensus()};
+    // Aurumcoin: reproduce the legacy 0.12 BIP30 skip rule, which is decoupled
+    // from (never activated) BIP34 enforcement. See consensus/params.h.
+    const bool legacy_bip30{consensus_params.legacy_bip30_skip_height >= 0};
+    const int bip30_skip_height{legacy_bip30 ? consensus_params.legacy_bip30_skip_height : consensus_params.BIP34Height};
+    const uint256& bip30_skip_hash{legacy_bip30 ? consensus_params.legacy_bip30_skip_hash : consensus_params.BIP34Hash};
+    CBlockIndex* pindexBIP34height = pindex->pprev->GetAncestor(bip30_skip_height);
     //Only continue to enforce if we're below BIP34 activation height or the block hash at that height doesn't correspond.
-    fEnforceBIP30 = fEnforceBIP30 && (!pindexBIP34height || !(pindexBIP34height->GetBlockHash() == params.GetConsensus().BIP34Hash));
+    fEnforceBIP30 = fEnforceBIP30 && (!pindexBIP34height || !(pindexBIP34height->GetBlockHash() == bip30_skip_hash));
 
     // TODO: Remove BIP30 checking from block height 1,983,702 on, once we have a
     // consensus change that ensures coinbases at those heights cannot
     // duplicate earlier coinbases.
-    if (fEnforceBIP30 || pindex->nHeight >= BIP34_IMPLIES_BIP30_LIMIT) {
+    if (fEnforceBIP30 || (!legacy_bip30 && pindex->nHeight >= BIP34_IMPLIES_BIP30_LIMIT)) {
         for (const auto& tx : block.vtx) {
             for (size_t o = 0; o < tx->vout.size(); o++) {
                 if (view.HaveCoin(COutPoint(tx->GetHash(), o))) {

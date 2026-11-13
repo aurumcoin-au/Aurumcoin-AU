@@ -363,7 +363,8 @@ std::vector<std::string> serviceFlagsToStr(uint64_t flags);
  * should be updated appropriately to filter for nodes with
  * desired service flags (compatible with our new flags).
  */
-constexpr ServiceFlags SeedsServiceFlags() { return ServiceFlags(NODE_NETWORK | NODE_WITNESS); }
+// Aurumcoin: legacy 0.12 nodes do not signal NODE_WITNESS
+constexpr ServiceFlags SeedsServiceFlags() { return ServiceFlags(NODE_NETWORK); }
 
 /**
  * Service flags we assume for addresses obtained from the DNS seeds and the

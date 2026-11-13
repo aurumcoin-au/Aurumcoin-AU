@@ -2408,8 +2408,9 @@ void CConnman::ThreadDNSAddressSeed()
                 AddAddrFetch(seed);
             } else {
                 std::vector<CAddress> vAdd;
-                constexpr ServiceFlags requiredServiceBits{SeedsServiceFlags()};
-                std::string host = strprintf("x%x.%s", requiredServiceBits, seed);
+                // Aurumcoin: legacy seeders do not support the "x<servicebits>."
+                // subdomain filter, query the plain seed host name.
+                std::string host = seed;
                 CNetAddr resolveSource;
                 if (!resolveSource.SetInternal(host)) {
                     continue;

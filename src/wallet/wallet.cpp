@@ -2295,6 +2295,11 @@ SigningResult CWallet::SignMessage(const std::string& message, const PKHash& pkh
 
 OutputType CWallet::TransactionChangeType(const std::optional<OutputType>& change_type, const std::vector<CRecipient>& vecSend) const
 {
+    // Aurumcoin: change must always be legacy while segwit is inactive.
+    if (AURUMCOIN_SEGWIT_OUTPUTS_DISABLED) {
+        return OutputType::LEGACY;
+    }
+
     // If -changetype is specified, always use that change type.
     if (change_type) {
         return *change_type;
@@ -2639,6 +2644,9 @@ bool CWallet::TopUpKeyPool(unsigned int kpSize)
 
 util::Result<CTxDestination> CWallet::GetNewDestination(const OutputType type, const std::string& label)
 {
+    if (AURUMCOIN_SEGWIT_OUTPUTS_DISABLED && type != OutputType::LEGACY) {
+        return util::Error{strprintf(_("Error: %s addresses are disabled on Aurumcoin while segwit is not active."), FormatOutputType(type))};
+    }
     LOCK(cs_wallet);
     auto spk_man = GetScriptPubKeyMan(type, /*internal=*/false);
     if (!spk_man) {
@@ -2655,6 +2663,9 @@ util::Result<CTxDestination> CWallet::GetNewDestination(const OutputType type, c
 
 util::Result<CTxDestination> CWallet::GetNewChangeDestination(const OutputType type)
 {
+    if (AURUMCOIN_SEGWIT_OUTPUTS_DISABLED && type != OutputType::LEGACY) {
+        return util::Error{strprintf(_("Error: %s addresses are disabled on Aurumcoin while segwit is not active."), FormatOutputType(type))};
+    }
     LOCK(cs_wallet);
 
     ReserveDestination reservedest(this, type);

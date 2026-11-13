@@ -15,9 +15,11 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 {
     assert(pindexLast != nullptr);
     unsigned int nProofOfWorkLimit = UintToArith256(params.powLimit).GetCompact();
+    // Aurumcoin: the interval depends on the retarget phase (see consensus/params.h)
+    const int64_t interval{params.DifficultyAdjustmentIntervalAt(pindexLast->nHeight)};
 
     // Only change once per difficulty adjustment interval
-    if ((pindexLast->nHeight+1) % params.DifficultyAdjustmentInterval() != 0)
+    if ((pindexLast->nHeight+1) % interval != 0)
     {
         if (params.fPowAllowMinDifficultyBlocks)
         {
@@ -30,7 +32,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
             {
                 // Return the last non-special-min-difficulty-rules-block
                 const CBlockIndex* pindex = pindexLast;
-                while (pindex->pprev && pindex->nHeight % params.DifficultyAdjustmentInterval() != 0 && pindex->nBits == nProofOfWorkLimit)
+                while (pindex->pprev && pindex->nHeight % interval != 0 && pindex->nBits == nProofOfWorkLimit)
                     pindex = pindex->pprev;
                 return pindex->nBits;
             }
@@ -38,8 +40,8 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         return pindexLast->nBits;
     }
 
-    // Go back by what we want to be 14 days worth of blocks
-    int nHeightFirst = pindexLast->nHeight - (params.DifficultyAdjustmentInterval()-1);
+    // Go back by what we want to be one retarget interval worth of blocks
+    int nHeightFirst = pindexLast->nHeight - (interval-1);
     assert(nHeightFirst >= 0);
     const CBlockIndex* pindexFirst = pindexLast->GetAncestor(nHeightFirst);
     assert(pindexFirst);
@@ -52,12 +54,15 @@ unsigned int CalculateNextWorkRequired(const CBlockIndex* pindexLast, int64_t nF
     if (params.fPowNoRetargeting)
         return pindexLast->nBits;
 
+    // Aurumcoin: the target timespan depends on the retarget phase (see consensus/params.h)
+    const int64_t target_timespan{params.PowTargetTimespanAt(pindexLast->nHeight)};
+
     // Limit adjustment step
     int64_t nActualTimespan = pindexLast->GetBlockTime() - nFirstBlockTime;
-    if (nActualTimespan < params.nPowTargetTimespan/4)
-        nActualTimespan = params.nPowTargetTimespan/4;
-    if (nActualTimespan > params.nPowTargetTimespan*4)
-        nActualTimespan = params.nPowTargetTimespan*4;
+    if (nActualTimespan < target_timespan/4)
+        nActualTimespan = target_timespan/4;
+    if (nActualTimespan > target_timespan*4)
+        nActualTimespan = target_timespan*4;
 
     // Retarget
     const arith_uint256 bnPowLimit = UintToArith256(params.powLimit);
@@ -76,7 +81,7 @@ unsigned int CalculateNextWorkRequired(const CBlockIndex* pindexLast, int64_t nF
     }
 
     bnNew *= nActualTimespan;
-    bnNew /= params.nPowTargetTimespan;
+    bnNew /= target_timespan;
 
     if (bnNew > bnPowLimit)
         bnNew = bnPowLimit;
@@ -90,9 +95,15 @@ bool PermittedDifficultyTransition(const Consensus::Params& params, int64_t heig
 {
     if (params.fPowAllowMinDifficultyBlocks) return true;
 
-    if (height % params.DifficultyAdjustmentInterval() == 0) {
-        int64_t smallest_timespan = params.nPowTargetTimespan/4;
-        int64_t largest_timespan = params.nPowTargetTimespan*4;
+    // Aurumcoin: `height` is the height of the new block; the retarget phase
+    // is selected from the previous block's height (see consensus/params.h).
+    const int last_height{static_cast<int>(height) - 1};
+    const int64_t interval{params.DifficultyAdjustmentIntervalAt(last_height)};
+    const int64_t target_timespan{params.PowTargetTimespanAt(last_height)};
+
+    if (height % interval == 0) {
+        int64_t smallest_timespan = target_timespan/4;
+        int64_t largest_timespan = target_timespan*4;
 
         const arith_uint256 pow_limit = UintToArith256(params.powLimit);
         arith_uint256 observed_new_target;
@@ -102,7 +113,7 @@ bool PermittedDifficultyTransition(const Consensus::Params& params, int64_t heig
         arith_uint256 largest_difficulty_target;
         largest_difficulty_target.SetCompact(old_nbits);
         largest_difficulty_target *= largest_timespan;
-        largest_difficulty_target /= params.nPowTargetTimespan;
+        largest_difficulty_target /= target_timespan;
 
         if (largest_difficulty_target > pow_limit) {
             largest_difficulty_target = pow_limit;
@@ -118,7 +129,7 @@ bool PermittedDifficultyTransition(const Consensus::Params& params, int64_t heig
         arith_uint256 smallest_difficulty_target;
         smallest_difficulty_target.SetCompact(old_nbits);
         smallest_difficulty_target *= smallest_timespan;
-        smallest_difficulty_target /= params.nPowTargetTimespan;
+        smallest_difficulty_target /= target_timespan;
 
         if (smallest_difficulty_target > pow_limit) {
             smallest_difficulty_target = pow_limit;

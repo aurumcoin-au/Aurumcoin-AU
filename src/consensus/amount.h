@@ -23,7 +23,7 @@ inline constexpr CAmount COIN{100'000'000};
  * critical; in unusual circumstances like a(nother) overflow bug that allowed
  * for the creation of coins out of thin air modification could lead to a fork.
  * */
-inline constexpr CAmount MAX_MONEY{21'000'000 * COIN};
+inline constexpr CAmount MAX_MONEY{300'000 * COIN}; // Aurumcoin: 300000 AU
 inline bool MoneyRange(const CAmount& nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 
 #endif // BITCOIN_CONSENSUS_AMOUNT_H

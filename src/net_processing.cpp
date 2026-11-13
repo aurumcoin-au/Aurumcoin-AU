@@ -1866,13 +1866,15 @@ bool PeerManagerImpl::HasAllDesirableServiceFlags(ServiceFlags services) const
 
 ServiceFlags PeerManagerImpl::GetDesirableServiceFlags(ServiceFlags services) const
 {
+    // Aurumcoin: do not require NODE_WITNESS, legacy 0.12 nodes never signal it
+    // and segwit is not active. Requiring it would disconnect all of them.
     if (services & NODE_NETWORK_LIMITED) {
         // Limited peers are desirable when we are close to the tip.
         if (ApproximateBestBlockDepth() < NODE_NETWORK_LIMITED_ALLOW_CONN_BLOCKS) {
-            return ServiceFlags(NODE_NETWORK_LIMITED | NODE_WITNESS);
+            return ServiceFlags(NODE_NETWORK_LIMITED);
         }
     }
-    return ServiceFlags(NODE_NETWORK | NODE_WITNESS);
+    return ServiceFlags(NODE_NETWORK);
 }
 
 PeerRef PeerManagerImpl::GetPeerRef(NodeId id) const

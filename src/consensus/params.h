@@ -6,6 +6,7 @@
 #ifndef BITCOIN_CONSENSUS_PARAMS_H
 #define BITCOIN_CONSENSUS_PARAMS_H
 
+#include <consensus/amount.h>
 #include <script/verify_flags.h>
 #include <uint256.h>
 
@@ -128,6 +129,45 @@ struct Params {
         return std::chrono::seconds{nPowTargetSpacing};
     }
     int64_t DifficultyAdjustmentInterval() const { return nPowTargetTimespan / nPowTargetSpacing; }
+    /**
+     * Aurumcoin: two-phase difficulty retargeting.
+     * Phase 1 uses nPowTargetTimespan, phase 2 uses nPowTargetTimespan2.
+     * The legacy 0.12 client selected the phase from the height of its active
+     * chain tip (== height of pindexLast when validating the next block):
+     *   - retarget interval switches when  last_height >= nPowRetargetBlockStart
+     *   - target timespan  switches when  last_height >  nPowRetargetBlockStart
+     * This off-by-one is consensus and must be reproduced exactly.
+     * The defaults keep phase 1 forever (Bitcoin behaviour).
+     */
+    int64_t nPowTargetTimespan2{0};
+    int nPowRetargetBlockStart{std::numeric_limits<int>::max()};
+    /** Retarget interval used to validate the block following last_height. */
+    int64_t DifficultyAdjustmentIntervalAt(int last_height) const
+    {
+        return (last_height >= nPowRetargetBlockStart ? nPowTargetTimespan2 : nPowTargetTimespan) / nPowTargetSpacing;
+    }
+    /** Target timespan used to validate the block following last_height. */
+    int64_t PowTargetTimespanAt(int last_height) const
+    {
+        return last_height > nPowRetargetBlockStart ? nPowTargetTimespan2 : nPowTargetTimespan;
+    }
+    /**
+     * Aurumcoin: the legacy client never enforced BIP34 (its supermajority
+     * thresholds were unreachable) but skipped BIP30 checks because the block
+     * at BIP34Height/BIP34Hash in its parameters (height 1) matched.
+     * If legacy_bip30_skip_height >= 0, BIP30 is skipped for blocks whose
+     * ancestor at that height has hash legacy_bip30_skip_hash, independent of
+     * BIP34 activation, and the BIP34_IMPLIES_BIP30_LIMIT re-enable is off.
+     */
+    int legacy_bip30_skip_height{-1};
+    uint256 legacy_bip30_skip_hash{};
+    /**
+     * Aurumcoin: only apply SCRIPT_VERIFY_WITNESS/TAPROOT to blocks where
+     * segwit is active (pre-0.13 behaviour). Bitcoin applies them from genesis.
+     */
+    bool witness_flags_require_segwit{false};
+    /** Aurumcoin: block subsidy before the first halving. */
+    CAmount nInitialSubsidy{50 * COIN};
     /** The best chain should have at least this much work */
     uint256 nMinimumChainWork;
     /** By default assume that the signatures in ancestors of this block are valid */

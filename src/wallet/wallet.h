@@ -144,8 +144,13 @@ inline constexpr size_t DUMMY_NESTED_P2WPKH_INPUT_SIZE = 91;
 
 class CCoinControl;
 
-//! Default for -addresstype
-inline constexpr OutputType DEFAULT_ADDRESS_TYPE{OutputType::BECH32};
+//! Default for -addresstype (Aurumcoin: legacy, segwit is not active)
+inline constexpr OutputType DEFAULT_ADDRESS_TYPE{OutputType::LEGACY};
+
+//! Aurumcoin: while segwit is inactive, p2sh-segwit/bech32/bech32m outputs are
+//! unspendable for us and anyone-can-spend for legacy nodes. Only legacy
+//! (P2PKH) receive and change addresses may be generated.
+inline constexpr bool AURUMCOIN_SEGWIT_OUTPUTS_DISABLED{true};
 
 inline constexpr uint64_t KNOWN_WALLET_FLAGS =
         WALLET_FLAG_AVOID_REUSE
