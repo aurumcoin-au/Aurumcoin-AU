@@ -65,6 +65,14 @@ Aurumcoin AU 0.12.4 = **Bitcoin Core 0.12.0** + wenige Änderungen (ohne BIP9/CS
      Copyright-Zeile "The Bitcoin Core developers" bleibt (MIT-Lizenz).
    - Bekannte Unit-Test-Fehler aus Version A (nicht Umbenennung): TestChain100Setup (fester Regtest-Hash),
      util_ParseMoney, rpc_parse_monetary_values (MAX_MONEY) → Schritt 8.
+7b. [x] Windows-Build (2026-11-13): Cross-Compile im WSL mit MinGW + depends (inkl. Qt 6), Build-Ordner
+   build-win (ohne GUI) und build-win-qt (mit GUI). Ergebnis in C:\aurumcoin_Win (statisch gelinkt, keine DLLs).
+   GUI angepasst: Logo aus 0.12, Einheiten AU/mAU/µAU, URI-Schema aurumcoin:, QSettings AurumcoinAU/Aurumcoin-Qt
+   (wie 0.12), Autostart Aurumcoin.lnk, sichtbare Texte, Windows-Dateiinfos aller .exe. (noch nicht committet)
+   - Problem: -loadblock/Sync unter Windows extrem langsam (~95 Blöcke/s statt ~5600/s unter Linux).
+     Ursache: BlockManager::WriteBlock öffnet+schließt die blk-Datei je Block; Defender scannt bei jedem
+     Schließen. Bei 1,35 Mio. Mini-Blöcken dominiert das. Kein Konsensfehler. Abhilfe: Defender-Ausnahme
+     für das Datenverzeichnis; ggf. Code-Optimierung (Blockdatei offen halten) prüfen.
 8. [ ] Unit-Tests anpassen
 9. [~] Konsens-Test: kompletter Sync der echten Chain, Vergleich mit 0.12-Referenz-Node
    - 2026-11-13: Bootstrap 1348395.AU1 komplett eingelesen (-assumevalid=0), 0 abgelehnte Blöcke,
