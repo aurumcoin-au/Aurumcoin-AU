@@ -79,7 +79,8 @@ using node::GetTransaction;
 using node::NodeContext;
 using node::PSBTAnalysis;
 
-static constexpr decltype(CTransaction::version) DEFAULT_RAWTX_VERSION{CTransaction::CURRENT_VERSION};
+// Aurumcoin: version 1 like the legacy 0.12 client (see wallet/coincontrol.h)
+static constexpr decltype(CTransaction::version) DEFAULT_RAWTX_VERSION{1};
 
 static void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& entry,
                      Chainstate& active_chainstate, const CTxUndo* txundo = nullptr,

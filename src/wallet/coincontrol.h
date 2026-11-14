@@ -21,7 +21,10 @@ namespace wallet {
 inline constexpr int DEFAULT_MIN_DEPTH = 0;
 inline constexpr int DEFAULT_MAX_DEPTH = 9'999'999;
 
-inline constexpr int DEFAULT_WALLET_TX_VERSION = CTransaction::CURRENT_VERSION;
+// Aurumcoin: legacy 0.12 nodes (based on Bitcoin Core 0.12.0) only relay and mine
+// version 1 transactions as standard. Version 2 is only needed for BIP68 (CSV), which
+// is not active on the Aurumcoin chain.
+inline constexpr int DEFAULT_WALLET_TX_VERSION = 1;
 
 //! Default for -avoidpartialspends
 inline constexpr bool DEFAULT_AVOIDPARTIALSPENDS = false;

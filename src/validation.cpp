@@ -4036,6 +4036,11 @@ void ChainstateManager::UpdateUncommittedBlockStructures(CBlock& block, const CB
 
 void ChainstateManager::GenerateCoinbaseCommitment(CBlock& block, const CBlockIndex* pindexPrev) const
 {
+    // Aurumcoin: as long as SegWit is not active (Aurumcoin 0.12 never had it),
+    // create coinbase transactions exactly like the legacy client: no witness
+    // commitment output.
+    if (!DeploymentActiveAfter(pindexPrev, *this, Consensus::DEPLOYMENT_SEGWIT)) return;
+
     int commitpos = GetWitnessCommitmentIndex(block);
     std::vector<unsigned char> ret(32, 0x00);
     if (commitpos == NO_WITNESS_COMMITMENT) {
