@@ -80,7 +80,25 @@ Aurumcoin AU 0.12.4 = **Bitcoin Core 0.12.0** + wenige Änderungen (ohne BIP9/CS
      chainwork e530b7beb5ec34e7ec, UTXO 130031 Outputs / 299370.53706425 AU (max. möglich 299406.796875).
    - 2026-11-13 (neuer Rechner C:\AurumCoin, WSL 16 GB): Wiederholung mit gleichem Patch, -dbcache=4000:
      Ergebnis identisch (Spitze, chainwork, 130031 Outputs / 299370.53706425 AU), 0 Fehler, Dauer 241 s.
-   - offen: Live-Test gegen 0.12-Nodes (P2P), neue Blöcke schürfen (Regtest/Testumgebung)
+   - 2026-11-14 Live-P2P: VM und Windows-GUI verbinden sich mit 5.199.133.55 (/Aurum:0.12.4/), Header-/Block-Sync OK.
+     Einzige noch erreichbare öffentliche AU-Node (alle anderen addnode-Adressen tot, Handshake-Test).
+   - 2026-11-14 **Stufe 1 (isoliert, neue Blöcke)**: v32-Node (WSL, ~/aurumcoin/stufe1/v32) + 0.12-Referenz-Node
+     (Docker au012, internes Netz au-test ohne Internet), beide per -loadblock auf 1348395, nur miteinander verbunden.
+     Geschürft mit 4x Antminer U1/U2 (COM4-7, ~4,8 GH/s) über eigenen Miner port-tools/aurumminer (AurumMiner.exe).
+     Ergebnisse:
+     - Blöcke aus v32-Vorlage (1348396-1348403, 1348406) vom 0.12-Node angenommen, Hashes identisch.
+     - Blöcke aus 0.12-Vorlage (1348404, 1348405, 1348407) von v32 angenommen.
+     - Schwierigkeit identisch berechnet über mehrere Retargets (1 → 4 → 16 → 64 → ~150 → ...), Belohnung
+       0,00390625 AU (8 Halbierungen) + Gebühren korrekt.
+     - Transaktionen: v32-Wallet erzeugte Version 2 → von 0.12.0 als nicht-standard verworfen (CURRENT_VERSION=1),
+       im Block aber gültig (1348406 mit v2-Tx von 0.12 angenommen). **Fix**: Wallet- und Raw-Tx-Standardversion 1
+       (wallet/coincontrol.h, rpc/rawtransaction.cpp) → v1-Tx sofort im 0.12-Mempool, von 0.12 geschürft (1348407),
+       von v32 angenommen.
+     - **Fix**: Coinbase ohne Witness-Commitment solange SegWit inaktiv (validation.cpp GenerateCoinbaseCommitment).
+     - getblocktemplate braucht auf der stehenden Chain -maxtipage (sonst "in initial sync"), nur bis zum ersten Block.
+     - Offen/Entscheidung: v32 schürft Blockversion 0x20000000. Ab >50 solcher Blöcke unter den letzten 100 zeigen
+       0.12-Nodes "Warning: This version is obsolete; upgrade required!" (main.cpp nUpgraded). Option: Version 4 wie Legacy.
+   - offen: Stufe 2 (echtes Netz)
 10. [ ] Wallet-Migration einer wallet.dat-Kopie testen
 11. [ ] Dockerfile (mehrstufig)
 
