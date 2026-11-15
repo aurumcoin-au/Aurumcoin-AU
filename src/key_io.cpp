@@ -82,6 +82,9 @@ public:
     std::string operator()(const PubKeyDestination& pk) const { return {}; }
 };
 
+//! Aurumcoin: witness addresses are refused while segwit is inactive (Version A).
+static constexpr bool AURUMCOIN_ACCEPT_WITNESS_ADDRESSES{false};
+
 CTxDestination DecodeDestination(const std::string& str, const CChainParams& params, std::string& error_str, std::vector<int>* error_locations)
 {
     std::vector<unsigned char> data;
@@ -131,6 +134,13 @@ CTxDestination DecodeDestination(const std::string& str, const CChainParams& par
     data.clear();
     const auto dec = bech32::Decode(str);
     if (dec.encoding == bech32::Encoding::BECH32 || dec.encoding == bech32::Encoding::BECH32M) {
+        // Aurumcoin: SegWit/Taproot are not active on the Aurumcoin chain. Outputs to
+        // witness programs would be spendable by anyone, so Bech32/Bech32m addresses
+        // (e.g. pasted Bitcoin "bc1..." addresses) are rejected everywhere.
+        if (!AURUMCOIN_ACCEPT_WITNESS_ADDRESSES) {
+            error_str = "Segwit (Bech32/Bech32m) addresses are not supported on Aurumcoin (segwit is not active)";
+            return CNoDestination();
+        }
         if (dec.data.empty()) {
             error_str = "Empty Bech32 data section";
             return CNoDestination();

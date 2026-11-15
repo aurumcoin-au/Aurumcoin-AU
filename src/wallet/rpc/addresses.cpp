@@ -22,7 +22,7 @@ RPCMethod getnewaddress()
 {
     return RPCMethod{
         "getnewaddress",
-        "Returns a new Bitcoin address for receiving payments.\n"
+        "Returns a new Aurumcoin address for receiving payments.\n"
                 "If 'label' is specified, it is added to the address book \n"
                 "so payments received with the address will be associated with 'label'.\n",
                 {
@@ -73,7 +73,7 @@ RPCMethod getrawchangeaddress()
 {
     return RPCMethod{
         "getrawchangeaddress",
-        "Returns a new Bitcoin address, for receiving change.\n"
+        "Returns a new Aurumcoin address, for receiving change.\n"
                 "This is for use with raw transactions, NOT normal use.\n",
                 {
                     {"address_type", RPCArg::Type::STR, RPCArg::DefaultHint{"set by -changetype"}, "The address type to use. Options are " + FormatAllOutputTypes() + "."},
@@ -138,7 +138,7 @@ RPCMethod setlabel()
 
     CTxDestination dest = DecodeDestination(request.params[0].get_str());
     if (!IsValidDestination(dest)) {
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Bitcoin address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Aurumcoin address");
     }
 
     const std::string label{LabelFromValue(request.params[1])};
