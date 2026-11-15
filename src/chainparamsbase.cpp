@@ -43,13 +43,13 @@ std::unique_ptr<CBaseChainParams> CreateBaseChainParams(const ChainType chain)
     case ChainType::MAIN:
         return std::make_unique<CBaseChainParams>("", 21080); // Aurumcoin RPC port
     case ChainType::TESTNET:
-        return std::make_unique<CBaseChainParams>("testnet3", 18332);
+        return std::make_unique<CBaseChainParams>("testnet3", 21180);
     case ChainType::TESTNET4:
-        return std::make_unique<CBaseChainParams>("testnet4", 48332);
+        return std::make_unique<CBaseChainParams>("testnet4", 21280);
     case ChainType::SIGNET:
-        return std::make_unique<CBaseChainParams>("signet", 38332);
+        return std::make_unique<CBaseChainParams>("signet", 21380);
     case ChainType::REGTEST:
-        return std::make_unique<CBaseChainParams>("regtest", 18443);
+        return std::make_unique<CBaseChainParams>("regtest", 21480);
     }
     assert(false);
 }

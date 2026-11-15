@@ -21,7 +21,10 @@
 class CChainParams;
 class ValidationSignals;
 
-inline constexpr auto DEFAULT_MAX_TIP_AGE{24h};
+// Aurumcoin: days or months can pass between two blocks. With 24h a fully synced node
+// would stay in initial block download (no header replies, no getblocktemplate).
+// Protection against low-work chains is provided by nMinimumChainWork.
+inline constexpr auto DEFAULT_MAX_TIP_AGE{std::chrono::hours{24 * 365}};
 inline constexpr int32_t DEFAULT_PREVOUTFETCH_THREADS{8};
 
 namespace kernel {
