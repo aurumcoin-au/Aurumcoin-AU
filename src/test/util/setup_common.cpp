@@ -422,13 +422,17 @@ TestChain100Setup::TestChain100Setup(
     coinbaseKey.Set(vchKey.begin(), vchKey.end(), true);
 
     // Generate a 100-block chain:
-    this->mineBlocks(COINBASE_MATURITY);
+    // Aurumcoin: COINBASE_MATURITY is 2 on Aurumcoin, the tests expect 100 blocks.
+    this->mineBlocks(100);
 
     {
         LOCK(::cs_main);
-        assert(
-            m_node.chainman->ActiveChain().Tip()->GetBlockHash().ToString() ==
-            "0ee6e270d6594249e548110619f7bd690695beb219b915da4a2e84e2b61ed60f");
+        // Regtest blocks are identical to Bitcoin Core once 100 blocks are mined
+        const std::string tip{m_node.chainman->ActiveChain().Tip()->GetBlockHash().ToString()};
+        if (tip != "0ee6e270d6594249e548110619f7bd690695beb219b915da4a2e84e2b61ed60f") {
+            fprintf(stderr, "TestChain100Setup: unexpected tip %s\n", tip.c_str());
+            assert(false);
+        }
     }
 }
 
