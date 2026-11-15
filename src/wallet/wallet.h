@@ -103,11 +103,14 @@ void NotifyWalletLoaded(WalletContext& context, const std::shared_ptr<CWallet>& 
 std::unique_ptr<WalletDatabase> MakeWalletDatabase(const std::string& name, const DatabaseOptions& options, DatabaseStatus& status, bilingual_str& error);
 
 //! -fallbackfee default
-inline constexpr CAmount DEFAULT_FALLBACK_FEE = 0;
+// Aurumcoin: fee estimation rarely has data on the Aurumcoin chain, so sending would fail
+// without a fallback. 100 sat/kvB (very low fees, see DEFAULT_MIN_RELAY_TX_FEE).
+inline constexpr CAmount DEFAULT_FALLBACK_FEE = 100;
 //! -discardfee default
 inline constexpr CAmount DEFAULT_DISCARD_FEE{10'000};
 //! -mintxfee default
-inline constexpr CAmount DEFAULT_TRANSACTION_MINFEE = 1000;
+// Aurumcoin: 100 sat/kvB (Bitcoin Core: 1000). 0.12 nodes relay only >= 1000 sat/kvB.
+inline constexpr CAmount DEFAULT_TRANSACTION_MINFEE = 100;
 //! -consolidatefeerate default
 inline constexpr CAmount DEFAULT_CONSOLIDATE_FEERATE{10'000}; // 10 sat/vbyte
 /**

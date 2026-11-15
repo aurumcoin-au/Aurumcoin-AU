@@ -67,6 +67,8 @@ inline constexpr unsigned int MAX_STANDARD_SCRIPTSIG_SIZE{1650};
  * outputs below the new threshold */
 inline constexpr unsigned int DUST_RELAY_TX_FEE{3000};
 /** Default for -minrelaytxfee, minimum relay fee for transactions */
+// Aurumcoin: kept at 100 sat/kvB (very low fees, fixed supply of 300,000 AU).
+// NOTE: Aurumcoin 0.12 nodes only relay transactions paying >= 1000 sat/kvB.
 inline constexpr unsigned int DEFAULT_MIN_RELAY_TX_FEE{100};
 /** Maximum number of transactions per cluster (default) */
 inline constexpr unsigned int DEFAULT_CLUSTER_LIMIT{64};
