@@ -6,10 +6,13 @@ Aurumcoin (AU) is a SHA256 proof-of-work cryptocurrency with a fixed supply of
 **Bitcoin Core v32.1**. It replaces the legacy Aurumcoin client 0.12.4 (based on
 Bitcoin Core 0.12.0), which is no longer maintained.
 
-> **Status: test version ("Version A").** The consensus rules are identical to
-> the legacy 0.12 client, so this software can run alongside existing 0.12
-> nodes. It has validated the complete existing chain (height 1,348,395) with
-> full script verification. It is not yet an official release.
+> **Status: released - v32.1.0 is the current official version.** The consensus
+> rules are identical to the legacy 0.12 client, so this software runs alongside
+> existing 0.12 nodes. It has validated the complete existing chain (height
+> 1,348,395) with full script verification. Downloads and checksums:
+> <https://www.aurumcoin-au.com/wallets.html>. Users of the 0.12 wallet should
+> read the [wallet migration guide](https://www.aurumcoin-au.com/dl/Aurumcoin-Wallet-Migration-Guide.pdf)
+> before upgrading.
 
 Coin properties
 ---------------
