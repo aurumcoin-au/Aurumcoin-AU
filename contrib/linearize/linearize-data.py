@@ -208,8 +208,12 @@ class BlockDataCopier:
                     print("Premature end of block data")
                     return
 
+            pos = self.inF.tell()
             inhdr = self.read_xored(self.inF, 8)
-            if (not inhdr or (inhdr[0] == "\0")):
+            # End of used data: the rest of a blk file is zero-padded on disk. Compare the raw
+            # (un-xored) bytes, otherwise the padding is scanned byte by byte (very slow).
+            raw_zero = bytes(self.xor_key[(pos + i) % len(self.xor_key)] for i in range(len(inhdr)))
+            if (not inhdr or inhdr == raw_zero):
                 self.inF.close()
                 self.inF = None
                 self.inFn = self.inFn + 1
